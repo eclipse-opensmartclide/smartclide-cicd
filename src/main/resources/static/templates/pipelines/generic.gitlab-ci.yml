@@ -1,0 +1,32 @@
+# This is a generic template with %[Parameters]% to be replaced befored it consumed
+image: %PIPELINE_IMAGE%
+
+stages:     #List of stages for jobs, and their order of execution
+  - build
+  - test
+  - release
+
+variables:
+  %PARAMS%
+  
+build app:       # This job runs in the build stage, which runs first.
+  stage: build
+  script:
+    - echo "Building application %APP_NAME%..."
+    - %BUILD_COMMAND%
+
+unit tests:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  script:
+    - echo "Running unit tests... "
+    - %TEST_COMMAND%
+  
+release app:      
+  stage: release  
+  image: docker:19.03.12
+  services:
+    - docker:19.03.12-dind
+  script:
+    - echo "releasing latest %APP_NAME% in docker registry..."
+  only:
+    - %RELEASE_ONLY%
