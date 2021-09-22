@@ -71,15 +71,15 @@ In gitlab the following events will take place.<br>
 - An docker image will be uploaded to the gitlab's repo container registry.
 
 
-## Build and run this project locally
-To build and run this project locally in a docker environment.<br>
-Build
+## Pull and run this project locally
+To pull and run this project locally.<br>
+Pull
 ```shell
-docker build -t smartclide-cicd .
+docker pull ghcr.io/eclipse-researchlabs/smartclide/smartclide-cicd:latest
 ```
 Run
 ```shell
-docker run --rm -p 8080:8080 smartclide-cicd
+docker run --rm -p 8080:8080 ghcr.io/eclipse-researchlabs/smartclide/smartclide-cicd:latest
 ```
 
 
