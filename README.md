@@ -57,6 +57,9 @@ For example for a maven project.<br>
 GET `` cicd/api/templates/dockerfiles/maven/download?extension=war`` <br>
 will produce a Dockerfile image with instructions specific for a maven and java project.<br>
 
+To include extra Build commands<br>
+GET `` cicd/api/templates/dockerfiles/maven/download?extension=war&extraCommands=RUN mv target/externallib.jar ./externallib.jar `` <br>
+
 Also to generate a .dockerignore for this project consume the following API.<br>
 GET `` cicd/api/templates/dockerfiles/dockerignore/download``
 
