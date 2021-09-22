@@ -28,6 +28,8 @@ build app:       # This job runs in the build stage, which runs first.
     expire_in: 3 days
     paths:
       - ./target
+  tags:
+    - ci
 
 
 docker build:
@@ -57,6 +59,8 @@ unit tests:   # This job runs in the test stage.
       junit:
         - target/surefire-reports/TEST-*.xml
         - target/failsafe-reports/TEST-*.xml
+  tags:
+    - ci
 
 release app:      
   stage: release  
@@ -78,3 +82,5 @@ reports:
   image: alpine
   script:
     - echo "Testsing and code inspection reportings"
+  tags:
+    - ci

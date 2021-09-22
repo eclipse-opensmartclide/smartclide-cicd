@@ -34,7 +34,8 @@ public class TemplateProvider {
 		return Stream.of(
 				Arguments.of(new DockerfileTemplate("maven","jar"),".jar",true),
 				Arguments.of(new DockerfileTemplate("maven","war"),".war",true),
-				Arguments.of(new DockerfileTemplate("maven","exe"),".war",false)
+				Arguments.of(new DockerfileTemplate("maven","war"),".war",true),
+				Arguments.of(new DockerfileTemplate("maven","exe","myCommand"),"myCommand",true)
 			);
 	}
 	

@@ -9,6 +9,7 @@ COPY .dockerignore .
 
 RUN mvn install -DskipTests=true
 RUN mv target/*.%EXTENSION% ./app.%EXTENSION%
+%EXTRA_BUILD_COMMANDS%
 RUN ls
 
 #Default port 8080 or include in run --server-port=PORT

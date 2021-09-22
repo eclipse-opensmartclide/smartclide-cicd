@@ -14,7 +14,9 @@ public class DockerTemplateService implements TemplateService<DockerfileTemplate
 	
 	@Override
 	public DockerfileTemplate createTemplate(DockerfileTemplate template) {
-		template.setContent(fetchDockerfileContent(template.getType()).replaceAll("%EXTENSION%", template.getExtension()));
+		template.setContent(fetchDockerfileContent(template.getType())
+				.replaceAll("%EXTRA_BUILD_COMMANDS%", template.getExtraCommands())
+				.replaceAll("%EXTENSION%", template.getExtension()));
 		return template;
 	}
 	
