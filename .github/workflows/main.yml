@@ -46,7 +46,7 @@ jobs:
           push: true
           tags: ghcr.io/eclipse-researchlabs/smartclide/smartclide-cicd:${{steps.extract_branch.outputs.branch}}
   # Run only when push on main branch and release a 'latest' image
-  publish-stable:
+  publish-latest:
     runs-on: ubuntu-latest
     needs: tests
     if: github.ref == 'refs/heads/main'
