@@ -11,20 +11,19 @@
  * Contributors:
  *     avraampiperidis - initial API and implementation
  *******************************************************************************/
-package com.smartclide.intrasoft.cicd.services;
+package org.eclipse.opensmartclide.cicd.services;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+import org.eclipse.opensmartclide.cicd.core.DockerfileTemplate;
+import org.eclipse.opensmartclide.cicd.startup.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import com.smartclide.intrasoft.cicd.core.DockerfileTemplate;
-import com.smartclide.intrasoft.cicd.startup.Configuration;
-
 @Service
 public class DockerTemplateService implements TemplateService<DockerfileTemplate> {
-	
+
 	@Override
 	public DockerfileTemplate createTemplate(DockerfileTemplate template) {
 		template.setContent(fetchDockerfileContent(template.getType())
@@ -32,8 +31,8 @@ public class DockerTemplateService implements TemplateService<DockerfileTemplate
 				.replaceAll("%EXTENSION%", template.getExtension()));
 		return template;
 	}
-	
-	
+
+
 	private String fetchDockerfileContent(String type) {
 		try {
 			return new String(new ClassPathResource(Configuration.getDockerFilesFolder()+type.toLowerCase()
@@ -44,5 +43,5 @@ public class DockerTemplateService implements TemplateService<DockerfileTemplate
 		}
 		return null;
 	}
-	
+
 }

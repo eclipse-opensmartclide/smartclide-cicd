@@ -11,21 +11,17 @@
  * Contributors:
  *     avraampiperidis - initial API and implementation
  *******************************************************************************/
-package com.smartclide.intrasoft.cicd.core;
+package org.eclipse.opensmartclide.cicd.core;
 
 import java.util.List;
 
-import javax.validation.constraints.NotBlank;
-
-import com.smartclide.intrasoft.cicd.startup.Configuration;
-
 
 public class PipelineTemplate extends BaseTemplate {
-	
+
 	private String appName = "";
-	
+
 	private List<String> variables;
-	
+
 	private String image;
 	private String testWhen;
 	private String testOnly;
@@ -33,18 +29,18 @@ public class PipelineTemplate extends BaseTemplate {
 	private String reportWhen;
 	private String releaseOnly;
 	private String releaseWhen;
-	
+
 	private String buildCommand;
 	private String testCommand;
-	
-	
+
+
 	public PipelineTemplate(String type,String name,String content) {
 		this.setType(type);
 		this.appName = name;
 		this.setContent(content);
 	}
 	public PipelineTemplate() {}
-	
+
 	public String getAppName() {
 		return appName;
 	}

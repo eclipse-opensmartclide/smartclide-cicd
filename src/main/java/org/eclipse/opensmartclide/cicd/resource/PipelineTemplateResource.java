@@ -11,16 +11,16 @@
  * Contributors:
  *     avraampiperidis - initial API and implementation
  *******************************************************************************/
-package com.smartclide.intrasoft.cicd.resource;
+package org.eclipse.opensmartclide.cicd.resource;
 
 
+import org.eclipse.opensmartclide.cicd.core.PipelineTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smartclide.intrasoft.cicd.core.PipelineTemplate;
-import com.smartclide.intrasoft.cicd.services.TemplateService;
-import com.smartclide.intrasoft.cicd.startup.Configuration;
+import org.eclipse.opensmartclide.cicd.services.TemplateService;
+import org.eclipse.opensmartclide.cicd.startup.Configuration;
 
 @RestController
 @RequestMapping("templates/pipelines")

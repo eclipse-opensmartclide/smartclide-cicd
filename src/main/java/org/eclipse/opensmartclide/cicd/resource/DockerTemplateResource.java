@@ -11,10 +11,12 @@
  * Contributors:
  *     avraampiperidis - initial API and implementation
  *******************************************************************************/
-package com.smartclide.intrasoft.cicd.resource;
+package org.eclipse.opensmartclide.cicd.resource;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.eclipse.opensmartclide.cicd.core.DockerfileTemplate;
+import org.eclipse.opensmartclide.cicd.services.TemplateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +25,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smartclide.intrasoft.cicd.core.DockerfileTemplate;
-import com.smartclide.intrasoft.cicd.services.TemplateService;
-
 @RestController
 @RequestMapping("templates/dockerfiles")
 public class DockerTemplateResource extends BaseTemplateResource<DockerfileTemplate> {
@@ -33,7 +32,7 @@ public class DockerTemplateResource extends BaseTemplateResource<DockerfileTempl
 	public DockerTemplateResource(TemplateService<DockerfileTemplate> service) {
 		super(service,"Dockerfile");
 	}
-	
+
 	@GetMapping(value = "dockerignore")
 	@ResponseBody
 	public String getDockerIngore(@RequestParam(value="ignores", required = false) String[] ignores) {
@@ -45,7 +44,7 @@ public class DockerTemplateResource extends BaseTemplateResource<DockerfileTempl
 		}
 		return sBuilder.toString();
 	}
-	
+
 	@GetMapping(value = "dockerignore/download",produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	@ResponseBody
 	public byte[] getDockerIgnoreFile(@RequestParam(value="ignores", required = false) String[] ignores,HttpServletResponse response) {

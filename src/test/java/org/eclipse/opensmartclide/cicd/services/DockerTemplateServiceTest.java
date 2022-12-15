@@ -11,7 +11,7 @@
  * Contributors:
  *     avraampiperidis - initial API and implementation
  *******************************************************************************/
-package com.smartclide.intrasoft.cicd.services;
+package org.eclipse.opensmartclide.cicd.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -22,18 +22,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.smartclide.intrasoft.cicd.core.DockerfileTemplate;
-import com.smartclide.intrasoft.cicd.startup.Application;
-import com.smartclide.intrasoft.cicd.startup.Configuration;
+import org.eclipse.opensmartclide.cicd.core.DockerfileTemplate;
+import org.eclipse.opensmartclide.cicd.startup.Application;
+import org.eclipse.opensmartclide.cicd.startup.Configuration;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = {Application.class,Configuration.class})
 public class DockerTemplateServiceTest {
 	@Autowired
 	private TemplateService<DockerfileTemplate> service;
-	
+
 	@ParameterizedTest
-	@MethodSource("com.smartclide.intrasoft.cicd.services.TemplateProvider#dockerTemplateProvider")
+	@MethodSource("org.eclipse.opensmartclide.cicd.services.TemplateProvider#dockerTemplateProvider")
 	public void testCreateTemplate(DockerfileTemplate t,String value,boolean expected) {
 		assertEquals(expected,service.createTemplate(t).getContent().contains(value));
 	}
