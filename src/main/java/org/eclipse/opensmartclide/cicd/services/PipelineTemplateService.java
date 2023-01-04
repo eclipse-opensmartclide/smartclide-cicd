@@ -11,18 +11,17 @@
  * Contributors:
  *     avraampiperidis - initial API and implementation
  *******************************************************************************/
-package com.smartclide.intrasoft.cicd.services;
+package org.eclipse.opensmartclide.cicd.services;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+import org.eclipse.opensmartclide.cicd.core.PipelineTemplate;
+import org.eclipse.opensmartclide.cicd.startup.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
-
-import com.smartclide.intrasoft.cicd.core.PipelineTemplate;
-import com.smartclide.intrasoft.cicd.startup.Configuration;
 
 
 /**
@@ -33,7 +32,7 @@ public class PipelineTemplateService implements TemplateService<PipelineTemplate
 	/**
 	 * @param pipeline
 	 * @return the pipeline
-	 * 
+	 *
 	 * @todo replace with visitor pattern or something else
 	 */
 	@Override
@@ -52,14 +51,14 @@ public class PipelineTemplateService implements TemplateService<PipelineTemplate
 		}
 		return template;
 	}
-	
-	
+
+
 	private void setPipelineContentMaven(String content,PipelineTemplate pipeline) {
 		pipeline.setContent(content.replaceAll("%APP_NAME%",pipeline.getAppName())
 				.replaceAll("%RELEASE_ONLY%", pipeline.getReleaseOnly() == null ? "master" : pipeline.getReleaseOnly()));
 	}
-	
-	
+
+
 	private void setPipelineContentGeneric(String content,PipelineTemplate pipeline) {
 		content = content.replaceAll("%PIPELINE_IMAGE%", pipeline.getImage() == null ? "alpine" : pipeline.getImage())
 				.replaceAll("%APP_NAME%", pipeline.getAppName())
@@ -68,13 +67,13 @@ public class PipelineTemplateService implements TemplateService<PipelineTemplate
 				.replaceAll("%RELEASE_ONLY%", pipeline.getReleaseOnly() == null ? "master" : pipeline.getReleaseOnly());
 		pipeline.setContent(content);
 	}
-	
+
 	@Autowired
 	ResourceLoader resourceLoader;
-	
-	
+
+
 	private String fetchPipelineContent(String type) {
-		
+
 		try {
 			return new String(new ClassPathResource(Configuration.getPipelinesFolder()+type.toLowerCase()
 				+Configuration.getPipelineName()).getInputStream().readAllBytes(),StandardCharsets.UTF_8);
@@ -97,5 +96,5 @@ public class PipelineTemplateService implements TemplateService<PipelineTemplate
 		}
 		return content.replaceAll("%APP_NAME%", pipeline.getAppName()).replaceAll("%PARAMS%", builder.toString());
 	}
-	
+
 }

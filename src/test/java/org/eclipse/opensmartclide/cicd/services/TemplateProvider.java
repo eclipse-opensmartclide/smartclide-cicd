@@ -11,15 +11,14 @@
  * Contributors:
  *     avraampiperidis - initial API and implementation
  *******************************************************************************/
-package com.smartclide.intrasoft.cicd.services;
+package org.eclipse.opensmartclide.cicd.services;
 
 import java.util.Arrays;
 import java.util.stream.Stream;
 
+import org.eclipse.opensmartclide.cicd.core.DockerfileTemplate;
+import org.eclipse.opensmartclide.cicd.core.PipelineTemplate;
 import org.junit.jupiter.params.provider.Arguments;
-
-import com.smartclide.intrasoft.cicd.core.DockerfileTemplate;
-import com.smartclide.intrasoft.cicd.core.PipelineTemplate;
 
 public class TemplateProvider {
 
@@ -41,8 +40,8 @@ public class TemplateProvider {
 				Arguments.of(t2,"VAR: WRONG",false)
 		);
 	}
-	
-	
+
+
 	static Stream<Arguments> dockerTemplateProvider() {
 		return Stream.of(
 				Arguments.of(new DockerfileTemplate("maven","jar"),".jar",true),
@@ -51,5 +50,5 @@ public class TemplateProvider {
 				Arguments.of(new DockerfileTemplate("maven","exe","myCommand"),"myCommand",true)
 			);
 	}
-	
+
 }

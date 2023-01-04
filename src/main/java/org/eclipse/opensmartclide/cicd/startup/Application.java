@@ -11,10 +11,17 @@
  * Contributors:
  *     avraampiperidis - initial API and implementation
  *******************************************************************************/
-package com.smartclide.intrasoft.cicd.services;
+package org.eclipse.opensmartclide.cicd.startup;
 
-import com.smartclide.intrasoft.cicd.core.BaseTemplate;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-public interface TemplateService<T extends BaseTemplate> {
-	T createTemplate(T t);
+/**
+ * @author INTRASOFT
+ */
+@SpringBootApplication
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 }

@@ -1,7 +1,7 @@
 # SmartCLIDE CI/CD
 [![N|Solid](https://i2.wp.com/smartclide.eu/wp-content/uploads/2020/02/cropped-SmartClideRGBColor-1.png?w=120&ssl=1)](https://smartclide.eu/)
 
-[![Actions Status](https://github.com/eclipse-researchlabs/smartclide-cicd/workflows/tests/badge.svg)](https://github.com/eclipse-researchlabs/smartclide-cicd/actions)
+[![Actions Status](https://github.com/eclipse-opensmartclide/smartclide-cicd/workflows/tests/badge.svg)](https://github.com/eclipse-opensmartclide/smartclide-cicd/actions)
 <br><br>
 
 This is a SmartCLIDE CI/CD project. As of this moment the main purposes of this project is to be used for <b>demonstration</b>, provide some CI/CD services(Rest-Api) to other resources and handle some specific tasks/jobs.<br>
@@ -75,13 +75,9 @@ In gitlab the following events will take place.<br>
 To pull and run this project locally.<br>
 Pull
 ```shell
-docker pull ghcr.io/eclipse-researchlabs/smartclide/smartclide-cicd:latest
+docker pull ghcr.io/eclipse-opensmartclide/smartclide-cicd:latest
 ```
 Run
 ```shell
-docker run --rm -p 8080:8080 ghcr.io/eclipse-researchlabs/smartclide/smartclide-cicd:latest
+docker run --rm -p 8080:8080 ghcr.io/eclipse-opensmartclide/smartclide-cicd:latest
 ```
-
-
-
-
